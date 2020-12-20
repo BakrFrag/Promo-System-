@@ -15,7 +15,8 @@ promo_delete=PromoViewSet.as_view({
 });
 promo_partial_update=PromoViewSet.as_view({
     "patch":'partial_update'
-})
+});
+
 urlpatterns = format_suffix_patterns([
 path('list/',promo_list,name="promo_list"),
 path('create/',promo_create,name="create_promo"),

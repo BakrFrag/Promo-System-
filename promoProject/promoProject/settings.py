@@ -43,6 +43,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # Custom middleware check database connection before processing request 
+    'promoProject.middleware.CatchOperationalError'
 ]
 # Cors Heades settings
 CORS_ALLOW_ALL_ORIGINS=True;

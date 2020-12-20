@@ -15,10 +15,16 @@ class NormalManager(models.Manager):
     def get_queryset(self):
           return super(NormalManager,self).get_queryset().filter(is_superuser=False);
 class AdminUser(User):
+    '''
+    proxy model - interface - include admin user - super user - 
+    '''
     objects=AdminManager();
     class Meta:
         proxy=True;
 class NormalUser(User):
+    '''
+    proxy model - interface - include non super user - normal user - 
+    '''
     objects=NormalManager();
     class Meta:
         proxy=True;

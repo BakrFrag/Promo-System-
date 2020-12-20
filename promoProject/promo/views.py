@@ -10,7 +10,7 @@ from rest_framework.response import Response;
 from rest_framework.validators import ValidationError;
 class PromoViewSet(ModelViewSet):
     '''
-    include default used methods 
+    include default used methods and custimized methods 
     '''
     def list(self,request):
         '''
@@ -57,6 +57,32 @@ class PromoViewSet(ModelViewSet):
                    
                    serializer=serializer(queryset);
                    return Response(serializer.data); 
+    def perform_update(self,serializer):
+        '''
+        custimize patch request when normal user deduct amount 
+        normal user cand deduct amount of promo 
+        if : 
+            promo is assigned to this normal user
+            promo is active 
+            deduct amount can't exceed promo amount 
+            deduct amount can't be less than 0
+        '''
+        if self.request.method=='PATCH':
+            print(serializer.instance.is_active)
+            if serializer.instance.is_active:
+                actual_amount=serializer.instance.amount;
+                updated_amount=serializer.validated_data.get('amount',None);
+                if updated_amount != None:
+                    if updated_amount >=0 and updated_amount <= actual_amount:
+                            serializer.validated_data['amount']=updated_amount;
+                    elif (updated_amount < 0) or(updated_amount > actual_amount):
+                            raise ValidationError("amount must be between zero and actual promo amount")
+                        
+                else:
+                    
+                    serializer.validated_data['amount']=actual_amount;
+                serializer.save();
+            raise ValidationError("Promo is no longer active")
     def get_serializer_class(self):
         '''
         handle serializer dynamically acording to request action

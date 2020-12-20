@@ -116,8 +116,16 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-
-# Simple Jwt Authentication 
+# Rest Framework Settings
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSESS':(
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+    }
 # JWT Authentication Settings 
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=30),

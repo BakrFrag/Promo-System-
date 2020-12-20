@@ -69,7 +69,9 @@ class PromoViewSet(ModelViewSet):
             deduct amount can't exceed promo amount 
             deduct amount can't be less than 0
         '''
+        
         if self.request.method=='PATCH':
+
             print(serializer.instance.is_active)
             if serializer.instance.is_active:
                 actual_amount=serializer.instance.amount;
@@ -84,7 +86,8 @@ class PromoViewSet(ModelViewSet):
                     
                     serializer.validated_data['amount']=actual_amount;
                 serializer.save();
-            raise ValidationError("Promo is no longer active")
+            raise ValidationError("Promo is no longer active");
+        serializer.save();
     def get_serializer_class(self):
         '''
         handle serializer dynamically acording to request action

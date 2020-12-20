@@ -22,14 +22,13 @@ class promoSerializer(serializers.ModelSerializer):
     class Meta:
         model=Promo;
         fields=['kind','start','end','amount','user'];
-    def create(self, validated_data):
-        return Promo(**validated_data)
+    
     def validate(self,data):
         start=data['start'];
         end=data['end'];
         kind=data['kind'];
         amount=data['amount']
-        
+        print("data:",data)
         if start < now:
             raise ValidationError("promo start time must be in present not in past")
         if start > end:

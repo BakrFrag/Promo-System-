@@ -29,7 +29,7 @@ pipenv install django djangorestframework django-cors-header djangorestframework
 ```
 6.
 ``` 
-cd Promo-System-
+cd promoProject
 ```
 7. applay migrations in database 
 ```

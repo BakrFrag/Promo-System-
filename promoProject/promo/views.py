@@ -104,10 +104,7 @@ class PromoViewSet(ModelViewSet):
         admin_methods=['PUT','POST','DELETE']
         if method in admin_methods:
             return (IsAuthenticated(),IsAdminUser(),)
-        elif method=='GET' or method=='OPTIONS':
-            
-            return (IsAuthenticated(),)
         elif method=='PATCH':
-            return (IsAuthenticated(),isForNormalUser(),)
+            return (IsAuthenticated(),isForNormalUser(),)    
         else:
             return (IsAuthenticated(),)

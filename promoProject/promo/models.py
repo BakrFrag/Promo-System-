@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User;
 from .helpers import getPromoCode ,now;
+from django.core.validators import  MinValueValidator ;
 class AdminManager(models.Manager):
     '''
     custom manager to handle superusers

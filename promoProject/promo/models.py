@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User;
+from .helpers import getPromoCode ,now;
 class AdminManager(models.Manager):
     '''
     custom manager to handle superusers

@@ -1,7 +1,8 @@
 from rest_framework import serializers;
 from rest_framework.exceptions import APIException;
 from .models import *;
-      
+from .serializers import now;
+from rest_framework.validators import ValidationError;
 class promoListSerializer(serializers.ModelSerializer):
     '''
     used to list or serialize list of promo objects or promo object
@@ -28,7 +29,7 @@ class promoSerializer(serializers.ModelSerializer):
         end=data['end'];
         kind=data['kind'];
         amount=data['amount']
-        now=datetime.now(timezone.utc);
+        
         if start < now:
             raise ValidationError("promo start time must be in present not in past")
         if start > end:

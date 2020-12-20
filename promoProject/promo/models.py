@@ -44,7 +44,7 @@ class Promo(models.Model):
         promo active only within time interval start and end 
         '''
 
-        print(now >= self.start)
+        
         if now >= self.start and now<=self.end:
             return True;
         return False;

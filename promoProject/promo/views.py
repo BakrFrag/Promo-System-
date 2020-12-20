@@ -12,6 +12,8 @@ class PromoViewSet(ModelViewSet):
     '''
     include default used methods and custimized methods 
     '''
+    model=Promo;
+    queryset=Promo.objects.all().order_by('-created');
     def list(self,request):
         '''
         if super user:

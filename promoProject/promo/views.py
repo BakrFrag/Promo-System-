@@ -86,7 +86,7 @@ class PromoViewSet(ModelViewSet):
                     
                     serializer.validated_data['amount']=actual_amount;
                 serializer.save();
-            raise ValidationError("Promo is no longer active");
+            raise ValidationError("Promo is inactive");
         serializer.save();
     def get_serializer_class(self):
         '''

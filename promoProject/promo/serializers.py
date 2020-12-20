@@ -42,7 +42,7 @@ class promoSerializer(serializers.ModelSerializer):
 
 class promoPartialSerializer(serializers.ModelSerializer):
     '''
-    used to allow normal user to deduct amount or promo
+    used to allow normal user to deduct amount of promo assigned to normal user
     '''
     class Meta:
         model=Promo;

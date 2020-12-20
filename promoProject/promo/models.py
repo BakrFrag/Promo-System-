@@ -43,7 +43,7 @@ class Promo(models.Model):
         check if promo is active or not 
         promo active only within time interval start and end 
         '''
-        now=datetime.now(timezone.utc);
+
         print(now >= self.start)
         if now >= self.start and now<=self.end:
             return True;

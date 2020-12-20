@@ -39,3 +39,12 @@ class promoSerializer(serializers.ModelSerializer):
         if kind=='Percentage' and (amount > 100 or amount < 0):
             raise ValidationError("promo of kind percentage amount must be greather than zero and less than or equal 100");
         return data;
+
+class promoPartialSerializer(serializers.ModelSerializer):
+    '''
+    used to allow normal user to deduct amount or promo
+    '''
+    class Meta:
+        model=Promo;
+        fields=['amount',]
+        
